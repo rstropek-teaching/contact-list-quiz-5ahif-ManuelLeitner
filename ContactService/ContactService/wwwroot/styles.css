@@ -1,6 +1,66 @@
 ﻿
 
-.done-true {
-    text-decoration: line-through;
-    color: grey;
+.fullWidth {
+    padding-right: 58px;
+}
+
+
+.center {
+    margin: auto;
+    display: table;
+    position: relative;
+}
+
+.right {
+    position: relative;
+    bottom: 26px;
+    left: 55px;
+    float: right;
+}
+
+button {
+    width: 45px;
+    height: 30px;
+}
+
+#fillSpace {
+    left: 0;
+    right: 50px;
+    width: 100%;
+}
+
+.id {
+    width: 30px;
+}
+
+.mail {
+    width: 230px;
+}
+
+.name{
+    width: 150px;
+}
+
+input, td{
+    padding: 0;
+}
+
+
+#contacts {
+    padding-top: 180px;
+}
+
+#ribbon {
+    position: fixed;
+    top: 0px;
+    width: 625px;
+    background-color: white;
+}
+
+th{
+    position: center;
+}
+
+table{
+    width: 100%;
 }

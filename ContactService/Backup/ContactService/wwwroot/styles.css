@@ -1,0 +1,25 @@
+﻿
+
+.fullWidth {
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: relative;
+}
+
+
+.center {
+    margin: auto;
+    display: table;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+button i{
+    width: 25px;
+    height: 25px;
+}

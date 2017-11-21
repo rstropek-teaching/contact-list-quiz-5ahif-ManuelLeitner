@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app="contactsApp" ng-controller="contactController">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="ContactsController.js">
+    </script>
+    <title>{{contacts.length}} Kontakt(e)</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+</head>
+<body>
+
+    <div class="center">
+        <h1>Kontakte</h1>
+
+        <h5>
+            Serviceadresse:
+            <input type="text" ng-model="url" class="fullWidth" />
+        </h5>
+        <br />
+
+        <span>{{contacts.length}} Kontakt(e) wurde(n) gefunden</span>
+        <br />
+
+        <button ng-click="load()">
+            <i class="material-icons" style="color: forestgreen">refresh</i>
+        </button>
+        <div class="fullWidth">
+            <input type="text" ng-style="{'background-color': filterValid ?  'white' : 'red'}" ng-model="nameFilter" ng-keyup="searchQuiet()" class="fullWidth" />
+            <button class="right" ng-click="search()">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
+
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>E-Mail</th>
+            </tr>
+            <tr ng-repeat="contact in contacts">
+                <td>
+                    <input type="text" ng-model="contact.id" disabled="disabled">
+                </td>
+                <td>
+                    <input type="text" ng-model="contact.firstName" readonly="readonly">
+                </td>
+                <td>
+                    <input type="text" ng-model="contact.lastName" readonly="readonly">
+                </td>
+                <td>
+                    <input type="email" ng-model="contact.email" readonly="readonly">
+                </td>
+                <td>
+                    <button ng-click="delete(contact.id)"><i class="material-icons">delete_forever</i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" disabled="disabled">
+                </td>
+                <td>
+                    <input type="text" ng-model="newContact.firstName">
+                </td>
+                <td>
+                    <input type="text" ng-model="newContact.lastName">
+                </td>
+                <td>
+                    <input type="email" ng-model="newContact.email">
+                </td>
+                <td>
+                    <button ng-click="add()"><i class="material-icons" style="color: orangered">person_add</i></button>
+
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>

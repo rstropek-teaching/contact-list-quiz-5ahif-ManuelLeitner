@@ -1,6 +1,7 @@
 ﻿using ContactService.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,7 @@ namespace ContactService.Controller {
             try {
                 ContactModel.Add(contact);
                 ContactModel.SaveChanges();
-            } catch (DbUpdateException) {
+            } catch (ArgumentException) {
                 return StatusCode(400, "Invalid input(e.g.required field missing or empty)");
             }
             return StatusCode(201, "Person successfully created");
@@ -32,7 +33,7 @@ namespace ContactService.Controller {
             return Ok(ContactModel.Contacts);
         }
 
-        [HttpDelete, Route("{personIdString}")]
+        [HttpDelete, Route("{personId}")]
         public IActionResult Delete([FromRoute]string personIdString) {
             int personId;
             if (!int.TryParse(personIdString, out personId))
@@ -50,10 +51,7 @@ namespace ContactService.Controller {
             string[] parts = (nameFilter ?? "").Split(' ');
             IEnumerable<Contact> res = ContactModel.Contacts;
             foreach (string part in parts)
-                if (part.Contains("%") || part.Contains("_"))
-                    res = res.Where(c => EF.Functions.Like(c.FirstName, part) || EF.Functions.Like(c.LastName, part));
-                else
-                    res = res.Where(c => c.FirstName.ToLower().Contains(part.ToLower()) || c.LastName.ToLower().Contains(part.ToLower()));
+                res = res.Where(c => EF.Functions.Like(c.FirstName, part) || EF.Functions.Like(c.LastName, part));
             int count = res.Count();
             if (count == 0) {
                 return StatusCode(400, "Invalid or missing name");

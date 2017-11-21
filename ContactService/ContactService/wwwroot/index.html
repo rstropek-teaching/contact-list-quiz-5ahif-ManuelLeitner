@@ -7,20 +7,43 @@
     </script>
     <title>{{contacts.length}} Kontakt(e)</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
 </head>
 <body>
 
-    <div>
-        <h2>Kontakte</h2>
-        <span>{{contacts.length}} Kontakt(e) wurde(n) gefunden</span>
-        <br />
-        <button ng-click="load()"><i class="material-icons" style="color: forestgreen">refresh</i></button>
+    <div class="center">
+        <div id="ribbon">
+            <h1 style="text-align: center">Kontakte</h1>
 
-        <input type="text" ng-style="{'background-color': filterValid ?  'white' : 'red'}" ng-model="nameFilter" ng-keyup="searchQuiet()" />
-        <button ng-click="search()"><i class="material-icons">search</i></button>
+            <h5 style=" margin: 0; padding-right:112px; height:23px">
+                Serviceadresse:
+                <input type="text" ng-model="url" style="width: 100%; position:relative; bottom: 20px; left:105px;" />
+            </h5>
 
-        <table class="unstyled">
+            <span>{{contacts.length}} Kontakt(e) wurde(n) gefunden</span>
+
+            <div class="fullWidth">
+                <input id="fillSpace" type="text" ng-style="{'background-color': filterValid ?  'white' : 'red'}" ng-model="nameFilter" ng-keyup="searchQuiet()" />
+                <button class="right" ng-click="search()">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+            <table>
+                <tr>
+                    <th class="id">Id</th>
+                    <th class="name">Vorname</th>
+                    <th class="name">Nachname</th>
+                    <th class="mail">E-Mail</th>
+                    <th>
+                        <button ng-click="load()">
+                            <i class="material-icons" style="color: forestgreen">refresh</i>
+                        </button></th>
+                </tr>
+            </table>
+        </div>
+        <table id="contacts">
             <tr>
                 <th>Id</th>
                 <th>Vorname</th>
@@ -29,16 +52,16 @@
             </tr>
             <tr ng-repeat="contact in contacts">
                 <td>
-                    <input type="text" ng-model="contact.id" disabled="disabled">
+                    <input class="id" type="text" ng-model="contact.id" disabled="disabled">
                 </td>
                 <td>
-                    <input type="text" ng-model="contact.firstName" readonly="readonly">
+                    <input class="name" type="text" ng-model="contact.firstName" readonly="readonly">
                 </td>
                 <td>
-                    <input type="text" ng-model="contact.lastName" readonly="readonly">
+                    <input class="name" type="text" ng-model="contact.lastName" readonly="readonly">
                 </td>
                 <td>
-                    <input type="email" ng-model="contact.email" readonly="readonly">
+                    <input class="mail" type="email" ng-model="contact.email" readonly="readonly">
                 </td>
                 <td>
                     <button ng-click="delete(contact.id)"><i class="material-icons">delete_forever</i></button>
@@ -46,20 +69,20 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" ng-model="newContact.id" disabled="disabled">
+                    <input class="id" type="text" disabled="disabled">
                 </td>
                 <td>
-                    <input type="text" ng-model="newContact.firstName">
+                    <input class="name" type="text" ng-model="newContact.firstName">
                 </td>
                 <td>
-                    <input type="text" ng-model="newContact.lastName">
+                    <input class="name" type="text" ng-model="newContact.lastName">
                 </td>
                 <td>
-                    <input type="email" ng-model="newContact.email">
+                    <input class="mail" type="email" ng-model="newContact.email">
                 </td>
                 <td>
                     <button ng-click="add()"><i class="material-icons" style="color: orangered">person_add</i></button>
-                    
+
                 </td>
 
             </tr>

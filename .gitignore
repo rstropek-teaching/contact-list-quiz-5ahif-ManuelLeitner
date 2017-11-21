@@ -6,3 +6,5 @@
 /ContactService/.vs
 /ContactService/ContactService/bin
 /ContactService/ContactService/obj
+/ContactService/ContactService.Test/bin/Debug/netcoreapp2.0
+/ContactService/ContactService.Test/obj
