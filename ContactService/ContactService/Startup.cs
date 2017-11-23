@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 
-
 namespace ContactService {
     public class Startup {
         public static IConfigurationRoot Configuration { get; set; }

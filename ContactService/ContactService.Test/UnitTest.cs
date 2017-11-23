@@ -52,9 +52,7 @@ namespace ContactService.Test {
         [TestMethod]
         public void TestFilterMultipleCriteria() {
             var found = (IEnumerable<Contact>)((OkObjectResult)controller.Get("B m")).Value;
-
             CollectionAssert.AreEquivalent(new int[] { 5, 7, 8, 11, 15, 18 }, found.Select(c => c.Id).ToArray());
         }
-
     }
 }
