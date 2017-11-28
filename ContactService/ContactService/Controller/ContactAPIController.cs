@@ -7,11 +7,11 @@ using System.Linq;
 namespace ContactService.Controller {
 
     [Route("api/contacts")]
-    public class ContactController : Microsoft.AspNetCore.Mvc.Controller {
+    public class ContactAPIController : Microsoft.AspNetCore.Mvc.Controller {
 
         public ContactModel ContactModel { get; set; }
 
-        public ContactController(ContactModel contactModel) {
+        public ContactAPIController(ContactModel contactModel) {
             ContactModel = contactModel;
         }
 

@@ -19,7 +19,7 @@
   <ItemGroup>
     <None Include="wwwroot\ContactsController.js" />
     <None Include="wwwroot\favicon.ico" />
-    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\singlePage.html" />
     <None Include="wwwroot\styles.css" />
   </ItemGroup>
   <ItemGroup>

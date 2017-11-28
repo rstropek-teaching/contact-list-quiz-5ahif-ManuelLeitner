@@ -21,7 +21,8 @@ namespace ContactService {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
             services.AddDbContext<ContactModel>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("Local")));
+            //services.AddDbContext<ContactModel>(o => o.UseInMemoryDatabase(databaseName: "ContactsService"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
@@ -29,10 +30,14 @@ namespace ContactService {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseDefaultFiles();
+            app.UseStatusCodePages();
+
+            //  app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute(
+                name: "default",
+template: "{controller=Contacts}/{action=Index}/{id?}"));
         }
     }
 }

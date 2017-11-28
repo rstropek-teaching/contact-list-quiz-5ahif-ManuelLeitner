@@ -10,10 +10,10 @@ namespace ContactService.Test {
     public class UnitTest {
 
         static ContactModel model = new ContactModel();
-        static ContactController controller;
+        static ContactAPIController controller;
 
         static UnitTest() {
-            controller = new ContactController(model);
+            controller = new ContactAPIController(model);
 
             model.Contacts.Add(new Contact() { Id = 1, FirstName = "Adami", LastName = "Philipp", Email = "Adami.Philipp@htlperg.at" });
             model.Contacts.Add(new Contact() { Id = 2, FirstName = "Arbeithuber", LastName = "Gregor", Email = "Arbeithuber.Gregor@htlperg.at" });
